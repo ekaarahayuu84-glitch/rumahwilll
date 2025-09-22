@@ -1,0 +1,1 @@
+Taruh file JPG 360 Anda di folder ini dengan nama: ruangtamu.jpg, dapur.jpg, kamartidur.jpg

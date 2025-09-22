@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>360 View Interior</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum/build/pannellum.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/pannellum/build/pannellum.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: #000;
+    }
+    #panorama {
+      width: 100%;
+      height: 100vh;
+    }
+
+    /* Logo kanan atas */
+    .logo {
+      position: fixed;
+      top: 12px;
+      right: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #ffffff99;
+      padding: 6px 12px;
+      border-radius: 8px;
+      z-index: 2000;
+      color: #122c4e;
+      font-weight: bold;
+    }
+    .logo img {
+      height: 32px;
+      width: auto;
+    }
+
+    /* Menu tombol */
+    .menu {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      padding: 6px;
+      background: #ffffff99;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      z-index: 2000;
+    }
+    .menu button {
+      padding: 8px 14px;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      background: #122c4ec7;
+      color: #fcf9ce;
+      font-weight: 600;
+    }
+    .menu button:hover {
+      background: #089c9a;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Logo kanan atas -->
+  <div class="logo">
+    <img src="assets/logo.png" alt="Logo">
+    <span>Eka Rahayu</span>
+  </div>
+
+  <!-- Panorama -->
+  <div id="panorama"></div>
+
+  <!-- Menu tombol -->
+  <div class="menu">
+    <button onclick="viewer.loadScene('ruangtamu')">Ruang Tamu</button>
+    <button onclick="viewer.loadScene('kamartidur')">Kamar Tidur</button>
+    <button onclick="viewer.loadScene('dapur')">Dapur</button>
+  </div>
+
+  <script>
+    // Inisialisasi Pannellum multi-scene
+    let viewer = pannellum.viewer('panorama', {
+      default: {
+        firstScene: 'ruangtamu',
+        autoLoad: true,
+        showFullscreenCtrl: true   // aktifkan tombol fullscreen bawaan
+      },
+      scenes: {
+        ruangtamu: {
+          type: 'equirectangular',
+          panorama: 'assets/ruangtamu.jpg',
+          pitch: 0,
+          yaw: 0,
+          hfov: 110
+        },
+        dapur: {
+          type: 'equirectangular',
+          panorama: 'assets/dapur.jpg',
+          pitch: 0,
+          yaw: 0,
+          hfov: 110
+        },
+        kamartidur: {
+          type: 'equirectangular',
+          panorama: 'assets/kamartidur.jpg',
+          pitch: 0,
+          yaw: 0,
+          hfov: 110
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
+
